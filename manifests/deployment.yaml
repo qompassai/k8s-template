@@ -1,0 +1,21 @@
+# Smallest useful Deployment. Docs: https://kubernetes.io/docs/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
+  labels:
+    app: hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+        - name: hello
+          image: busybox:1.36
+          command: ["sh", "-c", "echo hello && sleep 3600"]
